@@ -1,0 +1,44 @@
+# Set plot images to a nice size
+options(repr.plot.width = 4, repr.plot.height = 4)
+
+# Load the ggplot2 package
+library(ggplot2)
+
+# Create circle data to plot
+t <- seq(0, 2*pi, length.out = 50)
+x <- sin(t)
+y <- cos(t)
+df <- data.frame(t, x, y)
+
+points = 500
+
+# Define the Golden Angle
+# .... YOUR CODE FOR TASK 3 ....
+angle = pi*(3-sqrt(5))
+t <- (1:points) * angle
+x <- sin(t)
+y <-cos(t)
+df <- data.frame(t, x, y)
+
+# Make a scatter plot of points in a spiral
+p <- ggplot(df, aes(x*t, y*t))
+p + geom_point()
+
+# Change the values of angle and points
+angle <- 13*pi/180
+points <- 1000
+
+t <- (1:points)*angle
+x <- sin(t)
+y <- cos(t)
+df <- data.frame(t, x, y)
+
+# Adjust the plot parameters to create the magenta flower
+p <- ggplot(df, aes(x*t, y*t))
+p + geom_point(size = 80, alpha = 0.1, shape = 1, color = "magenta4")+
+  theme(legend.position="none",
+        panel.background = element_rect(fill = "white"),
+        panel.grid=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title=element_blank(),
+        axis.text=element_blank())
